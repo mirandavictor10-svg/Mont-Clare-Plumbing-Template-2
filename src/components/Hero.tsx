@@ -53,6 +53,21 @@ const Hero = () => {
         </div>
 
         <div className="relative">
+          {/*
+           * VIDEO TRANSITION PLACEHOLDER
+           * Replace this <img> with a <video> element that transitions from
+           * a plumbing disaster scene to a clean, finished result.
+           *
+           * Suggested implementation:
+           *   <video
+           *     autoPlay muted loop playsInline
+           *     className="rounded-2xl shadow-2xl w-full object-cover aspect-square"
+           *   >
+           *     <source src="/hero-transition.mp4" type="video/mp4" />
+           *   </video>
+           *
+           * Place the video file in the /public folder as hero-transition.mp4
+           */}
           <img
             src={heroImg}
             alt="4S Plumbing team of certified professionals in Chicago"

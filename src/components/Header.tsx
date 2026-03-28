@@ -19,7 +19,7 @@ const Header = () => {
   };
 
   return (
-    <header className="sticky top-0 z-40 bg-background/80 backdrop-blur-lg border-b border-border">
+    <header className="sticky top-[40px] z-40 bg-background/80 backdrop-blur-lg border-b border-border">
       <div className="max-w-7xl mx-auto flex items-center justify-between px-4 py-3">
         <a href="#" className="flex items-center gap-2" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
           <img src={logo} alt="4S Plumbing" className="h-10 w-auto" />

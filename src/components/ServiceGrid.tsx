@@ -1,4 +1,4 @@
-import { Wrench, Droplets, Flame, Camera, GaugeCircle, Snowflake, ArrowRight } from "lucide-react";
+import { Wrench, Droplets, Flame, Camera, GaugeCircle, Snowflake, Wind, ArrowRight } from "lucide-react";
 import { useFadeUp } from "@/hooks/useFadeUp";
 
 const services = [
@@ -8,6 +8,7 @@ const services = [
   { icon: Camera, title: "Sewer & Video Inspection", badge: "Advanced Tech", desc: "HD camera inspections, hydro-jetting, main line repair, and PDP compliance." },
   { icon: GaugeCircle, title: "Gas Lines", badge: "Licensed", desc: "Gas leak detection, line repair, and new installations by licensed pros." },
   { icon: Snowflake, title: "Frozen & Burst Pipes", badge: "Emergency", desc: "Chicago winters are brutal. Fast thawing and emergency pipe repair." },
+  { icon: Wind, title: "HVAC Services", badge: "Full Service", desc: "Heating and cooling repair, installation, and maintenance by certified technicians." },
 ];
 
 const ServiceGrid = () => {

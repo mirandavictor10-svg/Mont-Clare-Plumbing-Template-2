@@ -1,4 +1,4 @@
-import { Star } from "lucide-react";
+import { Star, Shield } from "lucide-react";
 import { useFadeUp } from "@/hooks/useFadeUp";
 
 const SocialProof = () => {
@@ -36,5 +36,4 @@ const SocialProof = () => {
   );
 };
 
-import { Shield } from "lucide-react";
 export default SocialProof;

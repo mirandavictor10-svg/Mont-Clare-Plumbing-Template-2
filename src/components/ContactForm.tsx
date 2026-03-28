@@ -2,13 +2,39 @@ import { useState } from "react";
 import { Phone, Mail, MapPin, Clock, Send } from "lucide-react";
 import { useFadeUp } from "@/hooks/useFadeUp";
 
+// TODO: Replace with your Formspree endpoint — sign up free at formspree.io
+// e.g. "https://formspree.io/f/YOUR_FORM_ID"
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
+
 const ContactForm = () => {
   const ref = useFadeUp();
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubmitted(true);
+    setLoading(true);
+    setError("");
+
+    const formData = new FormData(e.currentTarget);
+
+    try {
+      const res = await fetch(FORMSPREE_ENDPOINT, {
+        method: "POST",
+        body: formData,
+        headers: { Accept: "application/json" },
+      });
+      if (res.ok) {
+        setSubmitted(true);
+      } else {
+        setError("Something went wrong. Please call us directly at (773) 353-3050.");
+      }
+    } catch {
+      setError("Network error. Please call us directly at (773) 353-3050.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -66,7 +92,7 @@ const ContactForm = () => {
             <div className="rounded-2xl overflow-hidden border border-border h-56 bg-muted flex items-center justify-center">
               <iframe
                 title="4S Plumbing Location"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2964.123!2d-87.8!3d41.95!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDHCsDU3JzAwLjAiTiA4N8KwNDgnMDAuMCJX!5e0!3m2!1sen!2sus!4v1600000000000"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2970.5!2d-87.79058!3d41.95283!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880cd01b3d3e2aa3%3A0x1e2e2e2e2e2e2e2e!2s6807+W+Irving+Park+Rd%2C+Chicago%2C+IL+60634!5e0!3m2!1sen!2sus!4v1700000000000"
                 className="w-full h-full border-0"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
@@ -90,6 +116,7 @@ const ContactForm = () => {
                   <label className="block text-sm font-semibold text-foreground mb-1.5">Your Name</label>
                   <input
                     type="text"
+                    name="name"
                     required
                     placeholder="John Smith"
                     className="w-full px-4 py-3 rounded-xl border border-border bg-background text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-secondary/50 transition"
@@ -99,6 +126,7 @@ const ContactForm = () => {
                   <label className="block text-sm font-semibold text-foreground mb-1.5">Phone Number *</label>
                   <input
                     type="tel"
+                    name="phone"
                     required
                     placeholder="(773) 000-0000"
                     className="w-full px-4 py-3 rounded-xl border border-border bg-background text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-secondary/50 transition"
@@ -106,28 +134,34 @@ const ContactForm = () => {
                 </div>
                 <div>
                   <label className="block text-sm font-semibold text-foreground mb-1.5">Service Needed</label>
-                  <select className="w-full px-4 py-3 rounded-xl border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-secondary/50 transition">
+                  <select name="service" className="w-full px-4 py-3 rounded-xl border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-secondary/50 transition">
                     <option>Emergency Plumbing</option>
                     <option>Drain Cleaning</option>
                     <option>Water Heater</option>
                     <option>Sewer & Inspection</option>
                     <option>Gas Line</option>
+                    <option>HVAC</option>
                     <option>Other</option>
                   </select>
                 </div>
                 <div>
                   <label className="block text-sm font-semibold text-foreground mb-1.5">Brief Description (optional)</label>
                   <textarea
+                    name="message"
                     rows={3}
                     placeholder="Tell us what's going on..."
                     className="w-full px-4 py-3 rounded-xl border border-border bg-background text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-secondary/50 transition resize-none"
                   />
                 </div>
+                {error && (
+                  <p className="text-sm text-destructive font-medium">{error}</p>
+                )}
                 <button
                   type="submit"
-                  className="w-full bg-secondary text-secondary-foreground py-4 rounded-xl text-lg font-bold hover:brightness-110 transition shadow-lg shadow-secondary/25"
+                  disabled={loading}
+                  className="w-full bg-secondary text-secondary-foreground py-4 rounded-xl text-lg font-bold hover:brightness-110 transition shadow-lg shadow-secondary/25 disabled:opacity-60 disabled:cursor-not-allowed"
                 >
-                  Get My Free Quote
+                  {loading ? "Sending…" : "Get My Free Quote"}
                 </button>
                 <p className="text-xs text-muted-foreground text-center">
                   We respond within 15 minutes. No spam. No pressure.
