@@ -78,12 +78,6 @@ const Hero = () => {
         className="max-w-7xl mx-auto px-6 relative z-20 w-full font-sans flex flex-col items-center xl:items-start text-center xl:text-left mt-20 lg:mt-0"
       >
         <div className="max-w-4xl">
-          {/* Industrial Badge */}
-          <div className="inline-flex items-center gap-2 bg-secondary/20 border border-secondary/30 backdrop-blur-md px-4 py-1.5 rounded-full mb-8">
-            <Zap className="w-3.5 h-3.5 text-secondary animate-pulse" />
-            <span className="text-[10px] uppercase font-bold tracking-[0.2em] text-white">On Time. Flat Rate. Guaranteed.</span>
-          </div>
-
           <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-[0.9] tracking-tighter text-white mb-8 font-black drop-shadow-2xl">
             Chicago's Most <br className="hidden xl:block" />
             <span className="text-secondary italic">Trusted</span> Plumber.

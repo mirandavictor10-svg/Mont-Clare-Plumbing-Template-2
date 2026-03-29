@@ -49,10 +49,11 @@ const Header = () => {
           {/* Logo */}
           <a
             href="#"
-            className="flex items-center gap-3 group relative"
+            className={`flex items-center gap-3 group relative px-3 py-1 rounded-2xl backdrop-blur-md transition-all duration-300 ${
+              isDark ? "bg-white/10 border border-white/20" : "bg-black/8 border border-black/10"
+            }`}
             onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }}
           >
-            <div className="absolute -inset-4 bg-secondary/0 rounded-full blur-2xl transition-all duration-500 group-hover:bg-secondary/20" />
             <motion.img
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
