@@ -75,7 +75,7 @@ const Hero = () => {
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: hasScrolled ? 1 : 0, y: hasScrolled ? 0 : 40 }}
         transition={{ duration: 1.2, delay: 0.3, ease: "easeOut" }}
-        className="max-w-7xl mx-auto px-6 relative z-20 w-full font-sans flex flex-col items-center xl:items-start text-center xl:text-left mt-20 lg:mt-0"
+        className="max-w-7xl mx-auto px-6 relative z-20 w-full font-sans flex flex-col items-center xl:items-start text-center xl:text-left mt-28 lg:mt-16"
       >
         <div className="max-w-4xl">
           <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-[0.9] tracking-tighter text-white mb-8 font-black drop-shadow-2xl">
