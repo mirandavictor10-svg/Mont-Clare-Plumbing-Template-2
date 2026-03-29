@@ -50,7 +50,7 @@ const Header = () => {
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           >
             <div className="relative">
-              <img src={logo} alt="4S Plumbing" className="h-16 w-auto relative z-10" />
+              <img src={logo} alt="4S Plumbing" className="h-20 w-auto relative z-10" />
               <div className="absolute -inset-2 bg-secondary/5 rounded-full blur-xl group-hover:bg-secondary/10 transition-colors" />
             </div>
           </a>
