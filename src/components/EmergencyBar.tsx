@@ -9,7 +9,7 @@ const EmergencyBar = () => (
           <Zap className="w-3 h-3 fill-current" />
           <span>LIVE</span>
         </div>
-        <span className="opacity-60">Priority Industrial Dispatch Active // Avg response: 47 Min</span>
+        <span className="opacity-60">24/7 Emergency Service — Average Response: 45 Min</span>
       </div>
       
       <a
@@ -17,7 +17,7 @@ const EmergencyBar = () => (
         className="hidden sm:flex items-center gap-2 text-secondary hover:text-background hover:bg-secondary px-4 py-1 rounded-full transition-all border border-secondary/20 group"
       >
         <Phone className="w-3 h-3 group-hover:animate-bounce" />
-        <span className="text-background/80 group-hover:text-background">Dispatch: (773) 353-3050</span>
+        <span className="text-background/80 group-hover:text-background">Call: (773) 353-3050</span>
       </a>
     </div>
   </div>

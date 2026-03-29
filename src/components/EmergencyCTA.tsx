@@ -16,13 +16,13 @@ const EmergencyCTA = () => {
         >
           <div className="inline-flex items-center gap-2 bg-secondary/20 px-4 py-2 rounded-full border border-secondary/20">
             <Zap className="w-4 h-4 text-secondary fill-secondary animate-pulse" />
-            <span className="text-[10px] font-black uppercase tracking-[0.4em] text-secondary">Immediate Deployment</span>
+            <span className="text-[10px] font-black uppercase tracking-[0.4em] text-secondary">24/7 Emergency Service</span>
           </div>
           <h2 className="text-6xl md:text-8xl font-black tracking-tighter text-background leading-none">
-            Breach Detected? <br /><span className="text-secondary italic">Call Dispatch.</span>
+            Plumbing Emergency? <br /><span className="text-secondary italic">We're Already on the Way.</span>
           </h2>
           <p className="text-2xl text-background/40 font-bold uppercase tracking-widest max-w-2xl mx-auto leading-relaxed">
-            Our elite response unit is mobile 24/7/365. Don't wait for disaster to expand.
+            Our trucks are stationed across Chicago. Flat-rate pricing — same cost days, nights, weekends, and holidays. No overtime. Ever.
           </p>
         </motion.div>
 
@@ -36,10 +36,10 @@ const EmergencyCTA = () => {
             className="inline-flex items-center gap-6 bg-secondary text-background px-12 py-8 rounded-[2rem] text-2xl font-black uppercase tracking-tighter hover:scale-105 active:scale-95 transition-all shadow-2xl shadow-secondary/40 group"
           >
             <Phone className="w-8 h-8 group-hover:rotate-12 transition-transform" />
-            (773) 353-3050
+            Call (773) 353-3050
           </a>
           <p className="mt-8 text-[10px] font-black uppercase tracking-[0.3em] text-background/10">
-            Secure Request Line // Operational Readiness: 100%
+            Available 24/7 — No Overtime Charges
           </p>
         </motion.div>
       </div>

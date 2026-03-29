@@ -3,10 +3,10 @@ import { Phone, CalendarCheck, Star, Shield, Clock, DollarSign, Zap, ChevronDown
 import { motion, AnimatePresence } from "framer-motion";
 
 const trustBadges = [
-  { icon: Star, label: "HomeAdvisor Approved" },
-  { icon: Shield, label: "Master Licensed" },
+  { icon: Star, label: "Flat-Rate Pricing" },
+  { icon: Shield, label: "Licensed & Insured" },
   { icon: Clock, label: "24/7 Emergency" },
-  { icon: DollarSign, label: "Honest Pricing" },
+  { icon: DollarSign, label: "No Overtime Charges" },
 ];
 
 const Hero = () => {
@@ -81,16 +81,16 @@ const Hero = () => {
           {/* Industrial Badge */}
           <div className="inline-flex items-center gap-2 bg-secondary/20 border border-secondary/30 backdrop-blur-md px-4 py-1.5 rounded-full mb-8">
             <Zap className="w-3.5 h-3.5 text-secondary animate-pulse" />
-            <span className="text-[10px] uppercase font-bold tracking-[0.2em] text-white">Chicago's Industrial Standard</span>
+            <span className="text-[10px] uppercase font-bold tracking-[0.2em] text-white">On Time. Flat Rate. Guaranteed.</span>
           </div>
 
           <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-[0.9] tracking-tighter text-white mb-8 font-black drop-shadow-2xl">
-            Master Plumbing <br className="hidden xl:block" />
-            <span className="text-secondary italic">Precision</span> Engineering.
+            Chicago's Most <br className="hidden xl:block" />
+            <span className="text-secondary italic">Trusted</span> Plumber.
           </h1>
 
           <p className="text-xl sm:text-2xl text-slate-200 mb-10 max-w-2xl leading-relaxed font-medium drop-shadow-lg mx-auto xl:mx-0">
-            We don't just fix leaks; we rebuild infrastructure. Licensed experts delivering 24/7 industrial-grade plumbing solutions across Chicago in under 45 minutes.
+            Burst pipe at 2 AM? We'll be there in 45 minutes — guaranteed. Upfront flat-rate pricing, no overtime charges, no surprise fees. Rated 4.9★ across 120+ Google reviews.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center xl:justify-start gap-4 mb-16">
@@ -99,13 +99,13 @@ const Hero = () => {
               className="group flex flex-1 w-full sm:flex-none sm:w-auto items-center justify-center gap-3 bg-secondary text-secondary-foreground px-8 py-5 rounded-2xl text-lg font-black hover:scale-[1.02] active:scale-[0.98] transition-all shadow-2xl shadow-secondary/40 border border-secondary/50"
             >
               <Phone className="w-5 h-5 group-hover:rotate-12 transition-transform" />
-              (773) 353-3050
+              Call Now — (773) 353-3050
             </a>
             <button
               onClick={scrollToContact}
               className="flex flex-1 w-full sm:flex-none sm:w-auto items-center justify-center gap-3 bg-white/10 backdrop-blur-md border border-white/20 text-white px-8 py-5 rounded-2xl text-lg font-bold hover:bg-white/20 hover:border-white/40 transition-all shadow-xl"
             >
-              <CalendarCheck className="w-5 h-5" /> Book Online
+              <CalendarCheck className="w-5 h-5" /> Get a Free Estimate
             </button>
           </div>
 

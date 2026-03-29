@@ -2,10 +2,10 @@ import { Clock, DollarSign, Shield, CalendarCheck, Zap } from "lucide-react";
 import { motion } from "framer-motion";
 
 const reasons = [
-  { icon: Clock, title: "45-Min Average Response", desc: "Our industrial dispatch system ensures a technician is at your door while others are still on hold." },
-  { icon: DollarSign, title: "Zero Overtime Charges", desc: "Flat-rate industrial pricing. The same honest rate at 2 AM as 2 PM. No surprises. No hidden fees." },
-  { icon: Shield, title: "Master Licensed Elite", desc: "055 Master Licensed. Every technician is background-checked and precision-trained for complex sewer work." },
-  { icon: CalendarCheck, title: "24/7 Priority Support", desc: "Chicago never sleeps, and neither do we. Full-fleet availability every day of the year." },
+  { icon: DollarSign, title: "Upfront Flat-Rate Pricing", desc: "You know the price before we start. No hourly rates, no surprise add-ons, no overtime charges. The price we quote is the price you pay.", highlight: "No Surprise Fees" },
+  { icon: Clock, title: "On Time. Every Time.", desc: "We commit to a 45-minute arrival window and we take it seriously. Our trucks are stationed across Chicago so help is always nearby.", highlight: "45-Min Response" },
+  { icon: Shield, title: "Licensed Master Plumbers", desc: "Master License #055. Fully bonded and insured. Background-checked technicians you can trust in your home.", highlight: "Fully Credentialed" },
+  { icon: CalendarCheck, title: "100% Satisfaction Guarantee", desc: "Not happy? We come back and make it right at no extra charge. We stand behind every single job — no exceptions.", highlight: "Risk-Free" },
 ];
 
 const WhyUs = () => {
@@ -24,8 +24,9 @@ const WhyUs = () => {
             <span className="text-[10px] font-black uppercase tracking-[0.3em] text-secondary">The 4S Standard</span>
           </motion.div>
           <h2 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter text-foreground text-center">
-            Engineered for <br /><span className="text-secondary italic">Reliability.</span>
+            Why Chicago Homeowners <br /><span className="text-secondary italic">Choose Us.</span>
           </h2>
+          <p className="text-lg text-muted-foreground font-medium max-w-xl mx-auto">We didn't become Chicago's highest-rated plumber by accident.</p>
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -45,7 +46,7 @@ const WhyUs = () => {
               <p className="text-sm text-muted-foreground leading-relaxed font-medium opacity-80">{r.desc}</p>
               
               <div className="absolute top-6 right-6 text-[10px] font-black text-secondary/20 group-hover:text-secondary/40 transition-colors">
-                {`0${i + 1}`}
+                {r.highlight}
               </div>
             </motion.div>
           ))}

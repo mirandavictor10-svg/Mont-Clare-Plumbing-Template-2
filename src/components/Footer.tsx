@@ -18,7 +18,7 @@ const Footer = () => (
             <img src={logo} alt="4S Plumbing" className="h-16 w-auto brightness-0 invert" />
           </motion.a>
           <p className="text-background/40 font-bold uppercase text-xs tracking-[0.2em] leading-relaxed max-w-sm">
-            Forged in Chicago. Since 2014, 4S Plumbing & Sewer has delivered the absolute highest standard in industrial and residential mechanical services. Licensed. Mastered. Reliable.
+            Family-owned since 2014. 4S Plumbing & Sewer delivers fast, honest plumbing service across Chicago. Licensed, bonded, and insured.
           </p>
           <div className="flex items-center gap-6">
             <div className="flex flex-col">
@@ -28,7 +28,7 @@ const Footer = () => (
             <div className="h-8 w-px bg-background/10" />
             <div className="flex flex-col">
               <span className="text-secondary font-black text-2xl tracking-tighter">24/7</span>
-              <span className="text-[8px] font-black uppercase tracking-[0.2em] text-background/20">Deployment</span>
+              <span className="text-[8px] font-black uppercase tracking-[0.2em] text-background/20">Emergency</span>
             </div>
           </div>
         </div>
@@ -49,14 +49,14 @@ const Footer = () => (
         </div>
 
         <div className="space-y-8">
-          <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-background/20 mb-8">Comms Check</h4>
+          <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-background/20 mb-8">Contact Us</h4>
           <div className="space-y-6">
             <a href="tel:7733533050" className="group block">
-              <span className="text-[9px] font-black uppercase tracking-widest text-background/30 block mb-1">HQ Main</span>
+              <span className="text-[9px] font-black uppercase tracking-widest text-background/30 block mb-1">Main Office</span>
               <span className="text-xl font-black group-hover:text-secondary transition-colors">(773) 353-3050</span>
             </a>
             <a href="tel:3124206081" className="group block">
-              <span className="text-[9px] font-black uppercase tracking-widest text-background/30 block mb-1">Backup Dispatch</span>
+              <span className="text-[9px] font-black uppercase tracking-widest text-background/30 block mb-1">After Hours</span>
               <span className="text-xl font-black group-hover:text-secondary transition-colors">(312) 420-6081</span>
             </a>
             <div className="pt-4 opacity-40">
@@ -71,13 +71,13 @@ const Footer = () => (
 
       <div className="pt-12 border-t border-background/5 flex flex-col md:flex-row justify-between items-center gap-8">
         <p className="text-[9px] font-black uppercase tracking-[0.3em] text-background/20">
-          © 2026 4S Plumbing Companies, Inc. // Precision Mechanical Division
+          © 2026 4S Plumbing & Sewer, Inc.
         </p>
         <div className="flex items-center gap-8 text-[9px] font-black uppercase tracking-[0.3em] text-background/20">
-          <a href="#" className="hover:text-secondary transition-colors">Privacy Ops</a>
-          <a href="#" className="hover:text-secondary transition-colors">Terms of Serv</a>
+          <a href="#" className="hover:text-secondary transition-colors">Privacy Policy</a>
+          <a href="#" className="hover:text-secondary transition-colors">Terms of Service</a>
           <span className="flex items-center gap-2">
-            <Zap className="w-3 h-3" /> System: Stable
+            <Zap className="w-3 h-3" /> 24/7 Service
           </span>
         </div>
       </div>

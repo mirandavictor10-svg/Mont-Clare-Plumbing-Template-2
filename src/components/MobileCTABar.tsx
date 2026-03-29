@@ -7,14 +7,14 @@ const MobileCTABar = () => (
       className="flex-1 flex items-center justify-center gap-3 bg-secondary text-background py-5 rounded-2xl font-black uppercase text-[10px] tracking-[0.2em] shadow-2xl shadow-secondary/40"
     >
       <Phone className="w-4 h-4" /> 
-      Dispatch Now
+      Call Now
     </a>
     <button
       onClick={() => document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" })}
       className="flex-1 flex items-center justify-center gap-3 bg-foreground text-background py-5 rounded-2xl font-black uppercase text-[10px] tracking-[0.2em] shadow-2xl"
     >
       <MapPin className="w-4 h-4" /> 
-      Service Area
+      Free Estimate
     </button>
   </div>
 );

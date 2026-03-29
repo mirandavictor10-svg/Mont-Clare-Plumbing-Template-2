@@ -2,9 +2,9 @@ import { PhoneCall, Truck, CheckCircle2, Zap } from "lucide-react";
 import { motion } from "framer-motion";
 
 const steps = [
-  { num: "01", icon: PhoneCall, title: "Report Intake", desc: "Contact our dispatch 24/7. Immediate situation analysis performed on first call." },
-  { num: "02", icon: Truck, title: "Rapid Deployment", desc: "Master-certified technician dispatched to your coordinates within 60 minutes." },
-  { num: "03", icon: CheckCircle2, title: "Mission Completion", desc: "Surgical repair executed with transparent pricing and full operational guarantee." },
+  { num: "01", icon: PhoneCall, title: "You Call. We Answer.", desc: "Reach a real person — not a call center. We give you an upfront flat-rate quote on the spot. No hidden fees. No guesswork." },
+  { num: "02", icon: Truck, title: "We Show Up in 45 Min", desc: "A licensed, uniformed technician pulls up within 45 minutes — day or night, weekends and holidays included." },
+  { num: "03", icon: CheckCircle2, title: "Fixed Right. Guaranteed.", desc: "We fix it right the first time, clean up after ourselves, and back every job with a 100% satisfaction guarantee." },
 ];
 
 const HowItWorks = () => {
@@ -17,8 +17,11 @@ const HowItWorks = () => {
             <span className="text-[10px] font-black uppercase tracking-[0.3em] text-secondary">Operational Protocol</span>
           </div>
           <h2 className="text-5xl md:text-7xl font-black tracking-tighter text-foreground leading-none">
-            Standard Operating <br /><span className="text-secondary italic">Procedure.</span>
+            Fixed in 3 <br /><span className="text-secondary italic">Simple Steps.</span>
           </h2>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto font-medium leading-relaxed">
+            No runaround. No waiting days. Here's exactly what happens when you call.
+          </p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-12 relative">
