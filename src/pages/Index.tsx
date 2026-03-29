@@ -19,12 +19,12 @@ const Index = () => (
     <div data-header-theme="light"><SocialProof /></div>
     <div data-header-theme="light"><ServiceGrid /></div>
     <div data-header-theme="light"><HowItWorks /></div>
-    <div data-header-theme="dark"><WhyUs /></div>
+    <div data-header-theme="light"><WhyUs /></div>
     <div data-header-theme="dark"><EmergencyCTA /></div>
     <div data-header-theme="light"><Testimonials /></div>
     <div data-header-theme="light"><About /></div>
     <div data-header-theme="light"><ServiceAreas /></div>
-    <div data-header-theme="light"><ContactForm /></div>
+    <div data-header-theme="dark"><ContactForm /></div>
     <div data-header-theme="dark"><Footer /></div>
     <MobileCTABar />
   </div>

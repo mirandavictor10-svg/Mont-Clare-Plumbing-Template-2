@@ -15,21 +15,16 @@ const Header = () => {
   const [isDark, setIsDark] = useState(true); // hero is dark by default
 
   useEffect(() => {
-    const sections = document.querySelectorAll("[data-header-theme]");
-    const observer = new IntersectionObserver(
-      (entries) => {
-        // Find the topmost intersecting section
-        const visible = entries
-          .filter((e) => e.isIntersecting)
-          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
-        if (visible.length > 0) {
-          setIsDark(visible[0].target.getAttribute("data-header-theme") === "dark");
-        }
-      },
-      { rootMargin: "-10% 0px -85% 0px", threshold: 0 }
-    );
-    sections.forEach((s) => observer.observe(s));
-    return () => observer.disconnect();
+    const detect = () => {
+      const el = document.elementFromPoint(window.innerWidth / 2, 60);
+      const section = el?.closest("[data-header-theme]");
+      if (section) {
+        setIsDark(section.getAttribute("data-header-theme") === "dark");
+      }
+    };
+    detect();
+    window.addEventListener("scroll", detect, { passive: true });
+    return () => window.removeEventListener("scroll", detect);
   }, []);
 
   const scrollTo = (href: string) => {
