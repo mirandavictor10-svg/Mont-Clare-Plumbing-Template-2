@@ -16,11 +16,15 @@ const Header = () => {
 
   useEffect(() => {
     const detect = () => {
-      const el = document.elementFromPoint(window.innerWidth / 2, 60);
-      const section = el?.closest("[data-header-theme]");
-      if (section) {
-        setIsDark(section.getAttribute("data-header-theme") === "dark");
-      }
+      const sections = document.querySelectorAll("[data-header-theme]");
+      let theme = "dark";
+      sections.forEach((section) => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top <= 60 && rect.bottom > 60) {
+          theme = section.getAttribute("data-header-theme") ?? "dark";
+        }
+      });
+      setIsDark(theme === "dark");
     };
     detect();
     window.addEventListener("scroll", detect, { passive: true });
