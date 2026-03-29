@@ -59,7 +59,7 @@ const Header = () => {
               whileTap={{ scale: 0.95 }}
               src={logo}
               alt="4S Plumbing"
-              className={`h-[120px] w-auto relative z-10 transition-all duration-500 ${isDark ? "brightness-0 invert" : ""}`}
+              className={`h-14 w-auto relative z-10 transition-all duration-500 ${isDark ? "brightness-0 invert" : ""}`}
             />
           </a>
 
