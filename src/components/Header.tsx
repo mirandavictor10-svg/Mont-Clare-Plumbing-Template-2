@@ -32,7 +32,7 @@ const Header = () => {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 border-b ${
+        className={`sticky top-0 inset-x-0 z-50 transition-all duration-500 border-b ${
           scrolled
             ? "bg-slate-950/80 backdrop-blur-2xl border-white/10 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5)] py-3"
             : "bg-gradient-to-b from-slate-950/90 to-transparent border-transparent py-5"
