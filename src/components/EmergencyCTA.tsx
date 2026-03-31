@@ -7,9 +7,9 @@ const EmergencyCTA = () => {
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-0 left-0 w-full h-full bg-[repeating-linear-gradient(45deg,transparent,transparent_20px,rgba(255,255,255,0.05)_20px,rgba(255,255,255,0.05)_40px)]" />
       </div>
-      
+
       <div className="max-w-5xl mx-auto text-center relative z-10 space-y-12">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
           className="space-y-6"
@@ -21,7 +21,7 @@ const EmergencyCTA = () => {
           <h2 className="text-6xl md:text-8xl font-black tracking-tighter text-background leading-none">
             Plumbing Emergency? <br /><span className="text-secondary italic">We're Already on the Way.</span>
           </h2>
-          <p className="text-2xl text-background/40 font-bold uppercase tracking-widest max-w-2xl mx-auto leading-relaxed">
+          <p className="text-xl md:text-2xl text-background/50 font-medium max-w-2xl mx-auto leading-relaxed">
             Our trucks are stationed across Chicago. Flat-rate pricing — same cost days, nights, weekends, and holidays. No overtime. Ever.
           </p>
         </motion.div>
@@ -30,6 +30,7 @@ const EmergencyCTA = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
+          className="space-y-6"
         >
           <a
             href="tel:7733533050"
@@ -38,8 +39,8 @@ const EmergencyCTA = () => {
             <Phone className="w-8 h-8 group-hover:rotate-12 transition-transform" />
             Call (773) 353-3050
           </a>
-          <p className="mt-8 text-[10px] font-black uppercase tracking-[0.3em] text-background/10">
-            Available 24/7 — No Overtime Charges
+          <p className="text-sm font-bold text-background/40">
+            Available 24/7 — No Overtime Charges — 45-Minute Response
           </p>
         </motion.div>
       </div>

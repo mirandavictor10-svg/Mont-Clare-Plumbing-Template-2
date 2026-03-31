@@ -14,7 +14,7 @@ const HowItWorks = () => {
         <div className="text-center mb-20 space-y-6">
           <div className="inline-flex items-center gap-2 bg-secondary/10 px-4 py-1.5 rounded-full">
             <Zap className="w-3 h-3 text-secondary" />
-            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-secondary">Operational Protocol</span>
+            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-secondary">How It Works</span>
           </div>
           <h2 className="text-5xl md:text-7xl font-black tracking-tighter text-foreground leading-none">
             Fixed in 3 <br /><span className="text-secondary italic">Simple Steps.</span>
@@ -28,7 +28,7 @@ const HowItWorks = () => {
           <div className="hidden md:block absolute top-[2.25rem] left-[10%] right-[10%] h-px bg-foreground/5 z-0" />
 
           {steps.map((s, i) => (
-            <motion.div 
+            <motion.div
               key={s.num}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -42,7 +42,7 @@ const HowItWorks = () => {
                 <s.icon className="w-8 h-8" />
               </div>
               <h3 className="text-xl font-black uppercase tracking-tight text-foreground mb-4">{s.title}</h3>
-              <p className="text-sm text-muted-foreground font-medium max-w-[240px] mx-auto opacity-60 leading-relaxed uppercase tracking-widest">{s.desc}</p>
+              <p className="text-sm text-muted-foreground font-medium max-w-[280px] mx-auto leading-relaxed">{s.desc}</p>
             </motion.div>
           ))}
         </div>

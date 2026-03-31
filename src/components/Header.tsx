@@ -150,7 +150,7 @@ const Header = () => {
                   className="mt-4 p-6 bg-secondary/10 border border-secondary/20 rounded-2xl flex flex-col items-center justify-center text-center"
                 >
                   <p className="text-[10px] uppercase font-bold text-secondary tracking-widest mb-2 flex items-center gap-2">
-                    <Zap className="w-3 h-3" /> Emergency Dispatch
+                    <Zap className="w-3 h-3" /> 24/7 Emergency Line
                   </p>
                   <a href="tel:7733533050" className="text-3xl font-black text-white tracking-tighter">(773) 353-3050</a>
                 </motion.div>

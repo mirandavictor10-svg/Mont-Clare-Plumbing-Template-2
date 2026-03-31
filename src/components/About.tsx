@@ -1,10 +1,11 @@
-import { Award, CheckCircle, Users, Zap } from "lucide-react";
-import { motion, Variants } from "framer-motion";
+import { useState, useEffect, useRef } from "react";
+import { Award, CheckCircle, Zap } from "lucide-react";
+import { motion, Variants, useInView } from "framer-motion";
 
 const stats = [
-  { label: "Years Strong", value: "10+", sub: "Years Experience" },
-  { label: "Jobs Completed", value: "1,000+", sub: "Projects Finished" },
-  { label: "Our Team", value: "25+", sub: "Certified Technicians" },
+  { label: "Years Strong", value: 10, suffix: "+", sub: "Years Experience" },
+  { label: "Jobs Completed", value: 1000, suffix: "+", sub: "Projects Finished" },
+  { label: "Our Team", value: 25, suffix: "+", sub: "Certified Technicians" },
 ];
 
 const containerVariants: Variants = {
@@ -20,6 +21,38 @@ const itemVariants: Variants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
 };
 
+const AnimatedCounter = ({ value, suffix }: { value: number; suffix: string }) => {
+  const [count, setCount] = useState(0);
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  useEffect(() => {
+    if (!isInView) return;
+
+    const duration = 2000;
+    const steps = 60;
+    const increment = value / steps;
+    let current = 0;
+    const timer = setInterval(() => {
+      current += increment;
+      if (current >= value) {
+        setCount(value);
+        clearInterval(timer);
+      } else {
+        setCount(Math.floor(current));
+      }
+    }, duration / steps);
+
+    return () => clearInterval(timer);
+  }, [isInView, value]);
+
+  return (
+    <div ref={ref} className="text-5xl font-black text-secondary tracking-tighter mb-2 drop-shadow-sm tabular-nums">
+      {count.toLocaleString()}{suffix}
+    </div>
+  );
+};
+
 const About = () => {
   return (
     <section id="about" className="section-padding bg-slate-50 relative overflow-hidden">
@@ -29,8 +62,8 @@ const About = () => {
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-20 items-center">
-          
-          <motion.div 
+
+          <motion.div
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
@@ -41,11 +74,11 @@ const About = () => {
               <Zap className="w-3.5 h-3.5 text-secondary animate-pulse" />
               <span className="text-[10px] font-black uppercase tracking-[0.3em] text-secondary">Family-Owned Since 2014</span>
             </motion.div>
-            
+
             <motion.h2 variants={itemVariants} className="text-5xl md:text-7xl font-black tracking-tighter text-slate-950 leading-[0.9] drop-shadow-sm">
               Your Price Is Your Price. <br /><span className="text-secondary italic">Period.</span>
             </motion.h2>
-            
+
             <motion.div variants={itemVariants} className="space-y-6 text-xl text-slate-600 font-medium leading-relaxed max-w-lg">
               <p>
                 Family-owned since 2014. We started <span className="text-slate-950 font-black relative inline-block after:absolute after:bottom-1 after:left-0 after:w-full after:h-2 after:bg-secondary/20 after:-z-10">4S Plumbing & Sewer</span> with a simple idea: Chicago homeowners deserve a plumber who shows up on time, tells the truth about what's broken, and charges a fair price.
@@ -54,7 +87,7 @@ const About = () => {
                 Every one of our 25+ technicians is background-checked, fully certified, and trained to treat your home with respect. We stand behind every job we do — no exceptions.
               </p>
             </motion.div>
-            
+
             <motion.div variants={itemVariants} className="flex flex-wrap gap-3 pt-4">
               {["Licensed Master Plumbers", "OSHA Certified", "Bonded & Insured"].map((tag) => (
                 <div key={tag} className="flex items-center gap-2 px-4 py-2.5 bg-white border border-slate-200/60 rounded-xl text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 shadow-sm hover:border-secondary/30 hover:shadow-md transition-all group">
@@ -77,13 +110,13 @@ const About = () => {
               >
                 {/* Luminous hover flare */}
                 <div className="absolute inset-0 bg-gradient-to-br from-secondary/0 via-secondary/0 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                
+
                 <div className="absolute -top-4 -right-4 p-6 opacity-[0.03] group-hover:opacity-[0.08] transition-all duration-500 group-hover:scale-110 group-hover:-rotate-12">
                   <Award className="w-32 h-32" />
                 </div>
-                
+
                 <div className="relative z-10 flex flex-col justify-center">
-                  <div className="text-5xl font-black text-secondary tracking-tighter mb-2 drop-shadow-sm">{s.value}</div>
+                  <AnimatedCounter value={s.value} suffix={s.suffix} />
                   <div className="text-xs font-black uppercase tracking-[0.2em] text-slate-950 mb-1">{s.label}</div>
                   <div className="text-[10px] font-bold uppercase tracking-[0.1em] text-slate-500/70">{s.sub}</div>
                 </div>
