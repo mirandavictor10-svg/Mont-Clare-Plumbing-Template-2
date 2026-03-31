@@ -75,13 +75,13 @@ function DispatchBeam({ dests, initialDelay }: { dests: Dot[]; initialDelay: num
   return (
     <>
       {/* Traveling beam line */}
-      <motion.line
+      <motion.path
         key={`line-${cycle}`}
-        x1={50} y1={50}
-        x2={dest.x} y2={dest.y}
+        d={`M 50 50 L ${dest.x} ${dest.y}`}
         stroke="rgba(96,165,250,0.75)"
         strokeWidth="0.45"
         strokeLinecap="round"
+        fill="none"
         filter="url(#beamGlow)"
         initial={{ pathLength: 0, opacity: 0 }}
         animate={{
@@ -100,10 +100,9 @@ function DispatchBeam({ dests, initialDelay }: { dests: Dot[]; initialDelay: num
         cx={dest.x} cy={dest.y} r={1.8}
         fill="rgba(96,165,250,0.9)"
         filter="url(#beamGlow)"
-        style={{ transformBox: "fill-box", transformOrigin: "center" }}
-        initial={{ scale: 0, opacity: 0 }}
+        initial={{ r: 0, opacity: 0 }}
         animate={{
-          scale:   [0, 1.2, 0.8, 0.8, 0],
+          r:       [0, 2.5, 1.8, 1.8, 0],
           opacity: [0, 1,   0.7, 0.7, 0],
         }}
         transition={{
