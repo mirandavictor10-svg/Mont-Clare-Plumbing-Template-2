@@ -216,17 +216,6 @@ const ServiceAreas = () => {
                 </div>
               </div>
 
-              {/* Radius labels */}
-              <div className="absolute top-[14%] left-1/2 -translate-x-1/2">
-                <span className="text-[9px] font-bold text-secondary/40 uppercase tracking-widest">45 mi</span>
-              </div>
-              <div className="absolute top-[29%] left-1/2 -translate-x-1/2">
-                <span className="text-[9px] font-bold text-secondary/50 uppercase tracking-widest">30 mi</span>
-              </div>
-              <div className="absolute top-[44%] left-1/2 -translate-x-1/2">
-                <span className="text-[9px] font-bold text-secondary/60 uppercase tracking-widest">15 mi</span>
-              </div>
-
               {/* Floating neighborhood labels */}
               {[
                 { name: "Lincoln Park",  top: "12%", left: "72%" },
