@@ -1,12 +1,35 @@
-import { useState, useEffect, useRef } from "react";
-import { Award, CheckCircle, Zap } from "lucide-react";
-import { motion, Variants, useInView } from "framer-motion";
+import { CheckCircle, Dot, ShieldCheck, Star, Zap } from "lucide-react";
+import { motion, Variants } from "framer-motion";
 
-const stats = [
-  { label: "Years Strong", value: 10, suffix: "+", sub: "Years Experience" },
-  { label: "Jobs Completed", value: 1000, suffix: "+", sub: "Projects Finished" },
-  { label: "Our Team", value: 25, suffix: "+", sub: "Certified Technicians" },
-];
+const aboutTags = [
+  "Licensed Master Plumbers",
+  "OSHA Certified",
+  "Bonded & Insured",
+] as const;
+
+const featuredProof = {
+  value: "1,000+",
+  label: "Homes Served",
+  description: "Plumbing, sewer, drain, and HVAC jobs completed across Chicago.",
+  chips: ["Emergency Calls", "Drain Cleaning", "Water Heaters"],
+} as const;
+
+const sideStats = [
+  {
+    value: "10+",
+    label: "Years Strong",
+    badge: "Family-Owned",
+    description: "A decade of honest service, repeat customers, and trusted work.",
+    footer: "Serving Chicago Since 2014",
+  },
+  {
+    value: "25+",
+    label: "Certified Team",
+    badge: "Fully Credentialed",
+    description: "Licensed technicians trained to work clean, fast, and respectfully.",
+    footer: "Background-Checked Technicians",
+  },
+] as const;
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -21,48 +44,14 @@ const itemVariants: Variants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
 };
 
-const AnimatedCounter = ({ value, suffix }: { value: number; suffix: string }) => {
-  const [count, setCount] = useState(0);
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-
-  useEffect(() => {
-    if (!isInView) return;
-
-    const duration = 2000;
-    const steps = 60;
-    const increment = value / steps;
-    let current = 0;
-    const timer = setInterval(() => {
-      current += increment;
-      if (current >= value) {
-        setCount(value);
-        clearInterval(timer);
-      } else {
-        setCount(Math.floor(current));
-      }
-    }, duration / steps);
-
-    return () => clearInterval(timer);
-  }, [isInView, value]);
-
-  return (
-    <div ref={ref} className="text-5xl font-black text-secondary tracking-tighter mb-2 drop-shadow-sm tabular-nums">
-      {count.toLocaleString()}{suffix}
-    </div>
-  );
-};
-
 const About = () => {
   return (
     <section id="about" className="section-padding bg-slate-50 relative overflow-hidden">
-      {/* Background ambient glows */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-secondary/5 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-slate-900/5 rounded-full blur-[120px] translate-y-1/2 -translate-x-1/4 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-20 items-center">
-
+        <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-14 items-center">
           <motion.div
             variants={containerVariants}
             initial="hidden"
@@ -88,42 +77,119 @@ const About = () => {
               </p>
             </motion.div>
 
-            <motion.div variants={itemVariants} className="flex flex-wrap gap-3 pt-4">
-              {["Licensed Master Plumbers", "OSHA Certified", "Bonded & Insured"].map((tag) => (
-                <div key={tag} className="flex items-center gap-2 px-4 py-2.5 bg-white border border-slate-200/60 rounded-xl text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 shadow-sm hover:border-secondary/30 hover:shadow-md transition-all group">
-                  <CheckCircle className="w-3.5 h-3.5 text-secondary group-hover:scale-110 transition-transform" />
+            <motion.div variants={itemVariants} className="grid gap-3 sm:grid-cols-2">
+              {aboutTags.map((tag) => (
+                <div
+                  key={tag}
+                  className="flex items-center gap-2 px-4 py-3 rounded-2xl bg-slate-950 text-white text-[10px] font-black uppercase tracking-[0.22em] shadow-[0_18px_30px_-20px_rgba(15,23,42,0.35)]"
+                >
+                  <CheckCircle className="w-3.5 h-3.5 text-secondary" />
                   {tag}
                 </div>
               ))}
             </motion.div>
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 gap-6">
-            {stats.map((s, i) => (
-              <motion.div
-                key={s.label}
-                initial={{ opacity: 0, x: 50, rotateX: 15 }}
-                whileInView={{ opacity: 1, x: 0, rotateX: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ delay: i * 0.15, duration: 0.8, type: "spring", bounce: 0.4 }}
-                className="bg-white/60 backdrop-blur-xl border border-white p-10 rounded-[2rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgba(59,130,246,0.1)] hover:-translate-y-1 hover:border-secondary/30 transition-all duration-500 group relative overflow-hidden"
-              >
-                {/* Luminous hover flare */}
-                <div className="absolute inset-0 bg-gradient-to-br from-secondary/0 via-secondary/0 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                <div className="absolute -top-4 -right-4 p-6 opacity-[0.03] group-hover:opacity-[0.08] transition-all duration-500 group-hover:scale-110 group-hover:-rotate-12">
-                  <Award className="w-32 h-32" />
+          <div className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
+            <motion.article
+              initial={{ opacity: 0, y: 28 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className="relative overflow-hidden rounded-[2.25rem] bg-slate-950 p-8 text-white shadow-[0_40px_80px_-38px_rgba(15,23,42,0.6)]"
+            >
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(96,165,250,0.28),transparent_28%),linear-gradient(180deg,rgba(255,255,255,0.05),transparent_35%)]" />
+              <div className="relative z-10 flex h-full flex-col justify-between gap-10">
+                <div className="flex items-start justify-between gap-6">
+                  <div>
+                    <p className="text-[10px] font-black uppercase tracking-[0.28em] text-secondary/90">
+                      Featured Proof
+                    </p>
+                    <div className="mt-4 text-7xl md:text-8xl font-black tracking-[-0.06em] tabular-nums">
+                      {featuredProof.value}
+                    </div>
+                  </div>
+                  <div className="rounded-full border border-white/10 bg-white/5 p-4">
+                    <ShieldCheck className="w-8 h-8 text-secondary" />
+                  </div>
                 </div>
 
-                <div className="relative z-10 flex flex-col justify-center">
-                  <AnimatedCounter value={s.value} suffix={s.suffix} />
-                  <div className="text-xs font-black uppercase tracking-[0.2em] text-slate-950 mb-1">{s.label}</div>
-                  <div className="text-[10px] font-bold uppercase tracking-[0.1em] text-slate-500/70">{s.sub}</div>
+                <div className="max-w-md space-y-3">
+                  <p className="text-xs font-black uppercase tracking-[0.26em] text-white">
+                    {featuredProof.label}
+                  </p>
+                  <p className="text-lg font-medium leading-relaxed text-white/72">
+                    {featuredProof.description}
+                  </p>
                 </div>
-              </motion.div>
-            ))}
+
+                <div className="grid gap-3 sm:grid-cols-3">
+                  {featuredProof.chips.map((item) => (
+                    <div
+                      key={item}
+                      className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-[10px] font-black uppercase tracking-[0.2em] text-white/72"
+                    >
+                      {item}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </motion.article>
+
+            <div className="grid gap-6">
+              {sideStats.map((stat, index) => (
+                <motion.article
+                  key={stat.label}
+                  initial={{ opacity: 0, y: 28 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 0.8, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
+                  className="relative overflow-hidden rounded-[2rem] border border-slate-200/70 bg-white/85 p-6 shadow-[0_24px_50px_-30px_rgba(15,23,42,0.25)] backdrop-blur"
+                >
+                  <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-secondary via-sky-300 to-transparent" />
+                  <div className="flex items-start justify-between gap-4">
+                    <div>
+                      <div className="text-5xl font-black tracking-[-0.05em] text-slate-950 tabular-nums">
+                        {stat.value}
+                      </div>
+                      <p className="mt-3 text-[11px] font-black uppercase tracking-[0.24em] text-slate-950">
+                        {stat.label}
+                      </p>
+                    </div>
+                    <div className="rounded-full bg-secondary/10 px-3 py-2 text-[9px] font-black uppercase tracking-[0.22em] text-secondary">
+                      {stat.badge}
+                    </div>
+                  </div>
+                  <p className="mt-4 text-sm font-medium leading-relaxed text-slate-600">
+                    {stat.description}
+                  </p>
+                  <div className="mt-5 flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">
+                    <Star className="w-3.5 h-3.5 text-secondary" />
+                    {stat.footer}
+                  </div>
+                </motion.article>
+              ))}
+            </div>
           </div>
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, delay: 0.15 }}
+          className="mt-10 flex flex-wrap items-center gap-3 rounded-[2rem] border border-slate-200/70 bg-white/70 px-5 py-4 shadow-[0_24px_50px_-36px_rgba(15,23,42,0.25)]"
+        >
+          <span className="text-[10px] font-black uppercase tracking-[0.26em] text-slate-950">
+            Supporting Proof
+          </span>
+          {["No overtime surprise fees", "Chicago-focused dispatch", "Respectful in-home service"].map((item) => (
+            <div key={item} className="flex items-center gap-1.5 text-[10px] font-black uppercase tracking-[0.16em] text-slate-500">
+              <Dot className="w-4 h-4 text-secondary" />
+              {item}
+            </div>
+          ))}
+        </motion.div>
       </div>
     </section>
   );
