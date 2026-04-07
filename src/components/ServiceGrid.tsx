@@ -1,17 +1,9 @@
 import { Wrench, Droplets, Flame, Camera, GaugeCircle, Snowflake, Wind, ShowerHead, ArrowRight, Zap, Waves } from "lucide-react";
 import { motion, Variants } from "framer-motion";
+import { company } from "@/config/company.config";
 
-const services = [
-  { icon: Wrench, title: "Emergency Plumbing", badge: "24/7 — No Overtime", desc: "On-call 24/7/365 with a guaranteed 45-minute response — nights, weekends, and holidays. No overtime charges.", image: "https://herlemnsfxaozokirbwm.supabase.co/storage/v1/object/public/4s-plumbing/services/emergency-services.png" },
-  { icon: Droplets, title: "Drain Cleaning", badge: "Same-Day Service", desc: "We clear stubborn blockages in sinks, showers, tubs, and main sewer lines using power rodding and hydro-jetting.", image: "https://herlemnsfxaozokirbwm.supabase.co/storage/v1/object/public/4s-plumbing/services/drain-cleaning.png" },
-  { icon: Flame, title: "Water Heaters", badge: "Bradford White", desc: "We repair and install traditional tanks, power vent, and tankless systems. Same-day diagnosis, transparent pricing.", image: "https://herlemnsfxaozokirbwm.supabase.co/storage/v1/object/public/4s-plumbing/services/water-heater.png" },
-  { icon: Camera, title: "Sewer Line Repair", badge: "Video Inspection", desc: "We deploy camera inspections to find the problem fast, then repair or replace the line — often in a single visit.", image: "https://herlemnsfxaozokirbwm.supabase.co/storage/v1/object/public/4s-plumbing/services/sewer-video-inspection.png" },
-  { icon: GaugeCircle, title: "Gas Line Services", badge: "Licensed & Certified", desc: "Our licensed technicians handle gas line repairs, installations, and leak detection safely and up to code.", image: "https://herlemnsfxaozokirbwm.supabase.co/storage/v1/object/public/4s-plumbing/services/gas-line-repair.png" },
-  { icon: Waves, title: "Flood Control", badge: "Basin Installation", desc: "Protect your basement from flooding with professional flood control systems, catch basins, and sump pump installations.", image: "https://herlemnsfxaozokirbwm.supabase.co/storage/v1/object/public/4s-plumbing/services/flood-control.png" },
-  { icon: Snowflake, title: "Winterization", badge: "Prevent Costly Damage", desc: "We winterize your plumbing system and safely thaw frozen lines before they burst and flood your home.", image: "https://herlemnsfxaozokirbwm.supabase.co/storage/v1/object/public/4s-plumbing/services/pump-repair.png" },
-  { icon: Wind, title: "HVAC & Climate", badge: "Year-Round Comfort", desc: "From furnace repairs to AC installations, we keep your home comfortable in every season with reliable, certified service.", image: "https://herlemnsfxaozokirbwm.supabase.co/storage/v1/object/public/4s-plumbing/services/hvac.png" },
-  { icon: ShowerHead, title: "Fixtures & Remodels", badge: "Residential & Commercial", desc: "Toilets, faucets, garbage disposals, sinks, showers — we install and repair all fixtures for homes and businesses.", image: "https://herlemnsfxaozokirbwm.supabase.co/storage/v1/object/public/4s-plumbing/services/shower-repair.png" },
-];
+// Map service titles to their icons (order matches company.config services array)
+const serviceIcons = [Wrench, Droplets, Flame, Camera, GaugeCircle, Waves, Snowflake, Wind, ShowerHead];
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -62,43 +54,46 @@ const ServiceGrid = () => {
           viewport={{ once: true, margin: "-100px" }}
           className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8"
         >
-          {services.map((s) => (
-            <motion.div
-              variants={itemVariants}
-              key={s.title}
-              onClick={scrollToContact}
-              className="group relative bg-white/70 backdrop-blur-2xl border border-white rounded-[2.5rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgba(59,130,246,0.12)] hover:-translate-y-2 hover:border-secondary/40 transition-all duration-500 cursor-pointer overflow-hidden flex flex-col"
-            >
-              {/* Service image */}
-              <div className="h-48 overflow-hidden bg-slate-100">
-                <img
-                  src={s.image}
-                  alt={s.title}
-                  loading="lazy"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                />
-                {/* Badge overlay */}
-                <span className="absolute top-4 right-4 text-[9px] font-black uppercase tracking-[0.15em] text-white bg-secondary/90 backdrop-blur-sm px-3 py-1.5 rounded-lg shadow-lg">
-                  {s.badge}
-                </span>
-              </div>
+          {company.services.map((s, idx) => {
+            const Icon = serviceIcons[idx % serviceIcons.length];
+            return (
+              <motion.div
+                variants={itemVariants}
+                key={s.title}
+                onClick={scrollToContact}
+                className="group relative bg-white/70 backdrop-blur-2xl border border-white rounded-[2.5rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgba(59,130,246,0.12)] hover:-translate-y-2 hover:border-secondary/40 transition-all duration-500 cursor-pointer overflow-hidden flex flex-col"
+              >
+                {/* Service image */}
+                <div className="h-48 overflow-hidden bg-slate-100">
+                  <img
+                    src={s.image}
+                    alt={s.title}
+                    loading="lazy"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  />
+                  {/* Badge overlay */}
+                  <span className="absolute top-4 right-4 text-[9px] font-black uppercase tracking-[0.15em] text-white bg-secondary/90 backdrop-blur-sm px-3 py-1.5 rounded-lg shadow-lg">
+                    {s.badge}
+                  </span>
+                </div>
 
-              <div className="p-8 flex flex-col flex-1">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="p-2.5 rounded-xl bg-slate-100 text-slate-500 group-hover:bg-secondary group-hover:text-white transition-all duration-500 shadow-sm">
-                    <s.icon className="w-5 h-5" />
+                <div className="p-8 flex flex-col flex-1">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="p-2.5 rounded-xl bg-slate-100 text-slate-500 group-hover:bg-secondary group-hover:text-white transition-all duration-500 shadow-sm">
+                      <Icon className="w-5 h-5" />
+                    </div>
+                    <h3 className="text-lg font-black text-slate-950 leading-tight uppercase tracking-tight">{s.title}</h3>
                   </div>
-                  <h3 className="text-lg font-black text-slate-950 leading-tight uppercase tracking-tight">{s.title}</h3>
-                </div>
 
-                <p className="text-sm text-slate-500 mb-6 leading-relaxed font-medium flex-1">{s.desc}</p>
+                  <p className="text-sm text-slate-500 mb-6 leading-relaxed font-medium flex-1">{s.desc}</p>
 
-                <div className="flex items-center gap-3 text-secondary text-xs font-black uppercase tracking-widest group-hover:gap-5 transition-all duration-500">
-                  Get a Free Quote <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  <div className="flex items-center gap-3 text-secondary text-xs font-black uppercase tracking-widest group-hover:gap-5 transition-all duration-500">
+                    Get a Free Quote <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </div>
                 </div>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            );
+          })}
         </motion.div>
       </div>
     </section>

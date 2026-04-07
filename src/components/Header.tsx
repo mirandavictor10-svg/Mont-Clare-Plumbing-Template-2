@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Phone, Menu, X, ArrowUpRight, Zap } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import logo from "@/assets/logo.png";
+import { company } from "@/config/company.config";
 
 const navLinks = [
   { label: "Services", href: "#services" },
@@ -58,7 +59,7 @@ const Header = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               src={logo}
-              alt="4S Plumbing"
+              alt={company.shortName}
               className={`h-10 w-auto relative z-10 transition-all duration-500 ${isDark ? "brightness-0 invert" : ""}`}
             />
           </a>
@@ -91,7 +92,7 @@ const Header = () => {
             className="flex items-center gap-4"
           >
             <a
-              href="tel:7733533050"
+              href={`tel:${company.phoneRaw}`}
               className={`group relative hidden sm:flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-black uppercase tracking-widest transition-all duration-300 backdrop-blur-md ${
                 isDark
                   ? "bg-white/10 border border-white/30 text-white hover:bg-white/25"
@@ -100,7 +101,7 @@ const Header = () => {
             >
               <Phone className="w-3.5 h-3.5 relative z-10" />
               <span className="relative z-10 flex items-center gap-2">
-                (773) 353-3050 <ArrowUpRight className="w-3.5 h-3.5 opacity-50" />
+                {company.phone} <ArrowUpRight className="w-3.5 h-3.5 opacity-50" />
               </span>
             </a>
 
@@ -152,7 +153,7 @@ const Header = () => {
                   <p className="text-[10px] uppercase font-bold text-secondary tracking-widest mb-2 flex items-center gap-2">
                     <Zap className="w-3 h-3" /> 24/7 Emergency Line
                   </p>
-                  <a href="tel:7733533050" className="text-3xl font-black text-white tracking-tighter">(773) 353-3050</a>
+                  <a href={`tel:${company.phoneRaw}`} className="text-3xl font-black text-white tracking-tighter">{company.phone}</a>
                 </motion.div>
               </div>
             </motion.div>

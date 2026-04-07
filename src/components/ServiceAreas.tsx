@@ -1,22 +1,7 @@
 import { MapPin, Zap, Phone } from "lucide-react";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-
-// Three marquee rows — split neighborhoods across rows for even distribution
-const marqueeRows = [
-  {
-    label: "Chicago — North",
-    areas: ["Irving Park", "Portage Park", "Jefferson Park", "Lincoln Park", "Lakeview", "Lincoln Square", "Albany Park", "Rogers Park", "Edgewater", "Norwood Park", "Forest Glen"],
-  },
-  {
-    label: "Chicago — West & South",
-    areas: ["Belmont Cragin", "Dunning", "Montclare", "Hermosa", "Logan Square", "Wicker Park", "Humboldt Park", "Loop", "South Loop", "West Loop", "Near North Side", "Pilsen", "Bridgeport", "Hyde Park"],
-  },
-  {
-    label: "Suburbs",
-    areas: ["Elmwood Park", "River Grove", "Franklin Park", "Schiller Park", "Norridge", "Harwood Heights", "Clearing", "Garfield Ridge", "Austin", "Garfield Park", "Bronzeville", "Chinatown", "Brighton Park"],
-  },
-];
+import { company } from "@/config/company.config";
 
 // All neighborhood dot positions in SVG viewBox (0–100 coordinate space)
 // x = left%, y = top% — matches CSS position of floating labels exactly
@@ -158,10 +143,10 @@ const ServiceAreas = () => {
             <span className="text-[10px] font-black uppercase tracking-[0.3em] text-secondary">Service Coverage</span>
           </div>
           <h2 className="text-5xl md:text-7xl font-black tracking-tighter text-background leading-none">
-            Areas We <br /><span className="text-secondary italic">Serve.</span>
+            {company.serviceArea.heading} <br /><span className="text-secondary italic">{company.serviceArea.headingItalic}</span>
           </h2>
           <p className="text-xl text-background/40 font-medium max-w-xl mx-auto leading-relaxed">
-            Serving all of Chicago and surrounding suburbs — over 50 neighborhoods within a 45-mile radius.
+            {company.serviceArea.subtext}
           </p>
         </motion.div>
 
@@ -211,8 +196,8 @@ const ServiceAreas = () => {
                   </div>
                 </div>
                 <div className="mt-2 bg-background/5 backdrop-blur-sm border border-background/10 px-3 py-1.5 rounded-lg">
-                  <p className="text-[8px] font-black text-white/60 uppercase tracking-[0.15em] whitespace-nowrap">4S Plumbing HQ</p>
-                  <p className="text-[7px] font-bold text-background/30 text-center">Chicago, IL 60634</p>
+                  <p className="text-[8px] font-black text-white/60 uppercase tracking-[0.15em] whitespace-nowrap">{company.serviceArea.hqLabel}</p>
+                  <p className="text-[7px] font-bold text-background/30 text-center">{company.serviceArea.hqCity}</p>
                 </div>
               </div>
 
@@ -256,7 +241,7 @@ const ServiceAreas = () => {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="space-y-5 overflow-hidden"
           >
-            {marqueeRows.map((row, ri) => (
+            {company.serviceArea.marqueeRows.map((row, ri) => (
               <div key={ri} className="space-y-2">
                 <div className="flex items-center gap-2">
                   <div className="w-1.5 h-1.5 rounded-full bg-secondary" />
@@ -282,14 +267,14 @@ const ServiceAreas = () => {
             {/* CTA */}
             <div className="pt-4 flex flex-col sm:flex-row items-start gap-4">
               <a
-                href="tel:7733533050"
+                href={`tel:${company.phoneRaw}`}
                 className="inline-flex items-center gap-3 bg-secondary text-white px-6 py-3.5 rounded-2xl text-xs font-black uppercase tracking-[0.15em] hover:scale-[1.02] active:scale-[0.98] transition-all shadow-lg shadow-secondary/30"
               >
                 <Phone className="w-4 h-4" />
                 Call to Confirm Your Area
               </a>
               <p className="text-xs text-background/30 font-medium self-center">
-                50+ neighborhoods covered
+                {company.serviceArea.coverageNote}
               </p>
             </div>
           </motion.div>

@@ -1,47 +1,6 @@
 import { Check, Zap, Star } from "lucide-react";
 import { motion, Variants } from "framer-motion";
-
-const plans = [
-  {
-    name: "Basic",
-    price: "$100",
-    period: "/month",
-    features: [
-      "Sink Installation & Repair",
-      "Leaky Faucet Repair",
-      "Drain Cleaning",
-      "Priority Scheduling",
-    ],
-    highlighted: false,
-  },
-  {
-    name: "Standard",
-    price: "$200",
-    period: "/month",
-    features: [
-      "Everything in Basic",
-      "Water Heater Installation",
-      "Toilet Repair & Replacement",
-      "Priority Emergency Response",
-      "10% Off Additional Services",
-    ],
-    highlighted: true,
-  },
-  {
-    name: "Premium",
-    price: "$300",
-    period: "/month",
-    features: [
-      "Everything in Standard",
-      "Water Filter Installation",
-      "Annual Plumbing Inspection",
-      "Guaranteed Same-Day Service",
-      "15% Off Additional Services",
-      "Dedicated Account Manager",
-    ],
-    highlighted: false,
-  },
-];
+import { company } from "@/config/company.config";
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -92,7 +51,7 @@ const Pricing = () => {
           viewport={{ once: true, margin: "-50px" }}
           className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto"
         >
-          {plans.map((plan) => (
+          {company.pricingPlans.map((plan) => (
             <motion.div
               key={plan.name}
               variants={itemVariants}

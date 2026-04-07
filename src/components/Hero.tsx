@@ -1,13 +1,9 @@
 import { useState, useEffect } from "react";
 import { Phone, CalendarCheck, Star, Shield, Clock, DollarSign, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { company } from "@/config/company.config";
 
-const trustBadges = [
-  { icon: DollarSign, label: "Flat-Rate Pricing" },
-  { icon: Shield, label: "Licensed & Insured" },
-  { icon: Clock, label: "24/7 Emergency" },
-  { icon: Star, label: "No Overtime Charges" },
-];
+const badgeIcons = [DollarSign, Shield, Clock, Star];
 
 const Hero = () => {
   const [hasScrolled, setHasScrolled] = useState(false);
@@ -92,8 +88,8 @@ const Hero = () => {
             transition={{ delay: 0.5, duration: 1, ease: [0.16, 1, 0.3, 1] }}
             className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-[0.9] tracking-tighter text-white mb-8 font-black drop-shadow-2xl"
           >
-            Chicago's Most <br className="hidden xl:block" />
-            <span className="text-secondary italic">Trusted</span> Plumber.
+            {company.hero.headingLine1} <br className="hidden xl:block" />
+            <span className="text-secondary italic">{company.hero.headingItalic}</span> {company.hero.headingLine2}
           </motion.h1>
 
           <motion.p
@@ -102,7 +98,7 @@ const Hero = () => {
             transition={{ delay: 0.7, duration: 0.9, ease: "easeOut" }}
             className="text-xl sm:text-2xl text-slate-200 mb-10 max-w-2xl leading-relaxed font-medium drop-shadow-lg mx-auto xl:mx-0"
           >
-            Burst pipe at 2 AM? We'll be there in 45 minutes — guaranteed. Upfront flat-rate pricing, no overtime charges, no surprise fees. Rated 4.9★ across 120+ Google reviews.
+            {company.hero.subtext}
           </motion.p>
 
           <motion.div
@@ -112,11 +108,11 @@ const Hero = () => {
             className="flex flex-col sm:flex-row items-center justify-center xl:justify-start gap-4 mb-16"
           >
             <a
-              href="tel:7733533050"
+              href={`tel:${company.phoneRaw}`}
               className="group flex flex-1 w-full sm:flex-none sm:w-auto items-center justify-center gap-3 bg-secondary text-secondary-foreground px-8 py-5 rounded-2xl text-lg font-black hover:scale-[1.02] active:scale-[0.98] transition-all shadow-2xl shadow-secondary/40 border border-secondary/50"
             >
               <Phone className="w-5 h-5 group-hover:rotate-12 transition-transform" />
-              Call Now — (773) 353-3050
+              Call Now — {company.phone}
             </a>
             <button
               onClick={scrollToContact}
@@ -132,15 +128,18 @@ const Hero = () => {
             transition={{ delay: 1.1, duration: 0.8 }}
             className="flex flex-wrap items-center justify-center xl:justify-start gap-3"
           >
-            {trustBadges.map((b) => (
-              <div
-                key={b.label}
-                className="flex items-center gap-2 bg-slate-900/50 backdrop-blur-md border border-white/10 px-4 py-2 rounded-xl text-[10px] sm:text-xs font-bold uppercase tracking-wider text-slate-200 shadow-lg"
-              >
-                <b.icon className="w-3.5 h-3.5 text-secondary" />
-                {b.label}
-              </div>
-            ))}
+            {company.hero.badges.map((b, i) => {
+              const Icon = badgeIcons[i % badgeIcons.length];
+              return (
+                <div
+                  key={b.label}
+                  className="flex items-center gap-2 bg-slate-900/50 backdrop-blur-md border border-white/10 px-4 py-2 rounded-xl text-[10px] sm:text-xs font-bold uppercase tracking-wider text-slate-200 shadow-lg"
+                >
+                  <Icon className="w-3.5 h-3.5 text-secondary" />
+                  {b.label}
+                </div>
+              );
+            })}
           </motion.div>
         </div>
       </motion.div>

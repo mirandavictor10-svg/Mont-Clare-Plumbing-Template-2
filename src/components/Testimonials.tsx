@@ -1,38 +1,6 @@
 import { Star, Quote } from "lucide-react";
 import { motion, Variants } from "framer-motion";
-
-const reviews = [
-  {
-    name: "Nicole M.",
-    location: "Irving Park",
-    text: "William and team reached back out to me and made sure my original issue was taken care of and then some! Joseph that came was professional, courteous and made sure all my questions were answered. They were prompt and had very flexible scheduling!",
-  },
-  {
-    name: "Kevin F.",
-    location: "Lincoln Park",
-    text: "Excellent service and honest dealing, going well beyond expectations. Our plumber Tim was not only professional but an all-around nice guy who was happy to answer questions and look at other plumbing and leak issues around the house.",
-  },
-  {
-    name: "Mustafa S.",
-    location: "Portage Park",
-    text: "I have been dealing with 4S Plumbing for a few years — every time they provide excellent service that makes me come back. Marcus is so professional, he diagnosed the issue and fixed it quickly with very competitive pricing. The best plumbing service in Chicago.",
-  },
-  {
-    name: "Cyndi S.",
-    location: "Norridge",
-    text: "This company is quite unique and special. Not only are they fairly priced, flexible, and reliable — the owner Bill actually calls customers back himself. You don't have to go through layers of people to get something done. Highly valued!",
-  },
-  {
-    name: "Charles M.",
-    location: "Belmont Cragin",
-    text: "Their communication was exceptional, and Clint arrived within an hour to assess the issue. He was knowledgeable, polite, and used a camera to show me exactly what the problem was. Transparent and professional from start to finish.",
-  },
-  {
-    name: "Dan F.",
-    location: "Dunning",
-    text: "Our new water heater is working great. We upgraded from 40 to 50 gallons and Paul did an amazing job fitting the bigger tank into a small space. Quick turnaround and fair pricing. Highly recommend 4S for water heater work.",
-  },
-];
+import { company } from "@/config/company.config";
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -64,7 +32,7 @@ const Testimonials = () => {
         >
           <div className="inline-flex items-center gap-2 bg-secondary/10 px-4 py-1.5 rounded-full border border-secondary/20 shadow-sm">
             <Star className="w-3.5 h-3.5 text-secondary fill-secondary" />
-            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-secondary">4.9★ on Google</span>
+            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-secondary">{company.stats.reviewRating}★ on Google</span>
           </div>
           <h2 className="text-5xl md:text-7xl font-black tracking-tighter text-slate-950 leading-[0.9] drop-shadow-sm">
             What Our Customers <br /><span className="text-secondary italic">Are Saying.</span>
@@ -78,7 +46,7 @@ const Testimonials = () => {
           viewport={{ once: true, margin: "-50px" }}
           className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8"
         >
-          {reviews.map((r) => (
+          {company.reviews.map((r) => (
             <motion.div
               variants={itemVariants}
               key={r.name}
@@ -117,7 +85,7 @@ const Testimonials = () => {
         >
           <p className="text-xs font-bold text-slate-400 flex items-center justify-center gap-2">
             <span className="flex gap-1">{[...Array(5)].map((_, i) => <Star key={i} className="w-3 h-3 fill-amber-400 text-amber-400" />)}</span>
-            Rated 4.9/5 across 120+ verified Google reviews
+            Rated {company.stats.reviewRating}/5 across {company.stats.reviewCount}+ verified Google reviews
           </p>
         </motion.div>
       </div>

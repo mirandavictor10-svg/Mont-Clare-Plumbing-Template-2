@@ -1,35 +1,6 @@
 import { CheckCircle, Dot, ShieldCheck, Star, Zap } from "lucide-react";
 import { motion, Variants } from "framer-motion";
-
-const aboutTags = [
-  "Licensed Master Plumbers",
-  "OSHA Certified",
-  "Bonded & Insured",
-] as const;
-
-const featuredProof = {
-  value: "1,000+",
-  label: "Homes Served",
-  description: "Plumbing, sewer, drain, and HVAC jobs completed across Chicago.",
-  chips: ["Emergency Calls", "Drain Cleaning", "Water Heaters"],
-} as const;
-
-const sideStats = [
-  {
-    value: "10+",
-    label: "Years Strong",
-    badge: "Family-Owned",
-    description: "A decade of honest service, repeat customers, and trusted work.",
-    footer: "Serving Chicago Since 2014",
-  },
-  {
-    value: "25+",
-    label: "Certified Team",
-    badge: "Fully Credentialed",
-    description: "Licensed technicians trained to work clean, fast, and respectfully.",
-    footer: "Background-Checked Technicians",
-  },
-] as const;
+import { company } from "@/config/company.config";
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -61,24 +32,24 @@ const About = () => {
           >
             <motion.div variants={itemVariants} className="inline-flex items-center gap-2 bg-secondary/10 px-4 py-1.5 rounded-full border border-secondary/20 shadow-sm">
               <Zap className="w-3.5 h-3.5 text-secondary animate-pulse" />
-              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-secondary">Family-Owned Since 2014</span>
+              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-secondary">{company.about.tagline}</span>
             </motion.div>
 
             <motion.h2 variants={itemVariants} className="text-5xl md:text-7xl font-black tracking-tighter text-slate-950 leading-[0.9] drop-shadow-sm">
-              Your Price Is Your Price. <br /><span className="text-secondary italic">Period.</span>
+              {company.about.heading} <br /><span className="text-secondary italic">{company.about.headingItalic}</span>
             </motion.h2>
 
             <motion.div variants={itemVariants} className="space-y-6 text-xl text-slate-600 font-medium leading-relaxed max-w-lg">
               <p>
-                Family-owned since 2014. We started <span className="text-slate-950 font-black relative inline-block after:absolute after:bottom-1 after:left-0 after:w-full after:h-2 after:bg-secondary/20 after:-z-10">4S Plumbing & Sewer</span> with a simple idea: Chicago homeowners deserve a plumber who shows up on time, tells the truth about what's broken, and charges a fair price.
+                {company.about.paragraph1.split(company.shortName)[0]}<span className="text-slate-950 font-black relative inline-block after:absolute after:bottom-1 after:left-0 after:w-full after:h-2 after:bg-secondary/20 after:-z-10">{company.shortName}</span>{company.about.paragraph1.split(company.shortName)[1]}
               </p>
               <p>
-                Every one of our 25+ technicians is background-checked, fully certified, and trained to treat your home with respect. We stand behind every job we do — no exceptions.
+                {company.about.paragraph2}
               </p>
             </motion.div>
 
             <motion.div variants={itemVariants} className="grid gap-3 sm:grid-cols-2">
-              {aboutTags.map((tag) => (
+              {company.about.credentials.map((tag) => (
                 <div
                   key={tag}
                   className="flex items-center gap-2 px-4 py-3 rounded-2xl bg-slate-950 text-white text-[10px] font-black uppercase tracking-[0.22em] shadow-[0_18px_30px_-20px_rgba(15,23,42,0.35)]"
@@ -106,7 +77,7 @@ const About = () => {
                       Featured Proof
                     </p>
                     <div className="mt-4 text-7xl md:text-8xl font-black tracking-[-0.06em] tabular-nums">
-                      {featuredProof.value}
+                      {company.about.featuredProof.value}
                     </div>
                   </div>
                   <div className="rounded-full border border-white/10 bg-white/5 p-4">
@@ -116,15 +87,15 @@ const About = () => {
 
                 <div className="max-w-md space-y-3">
                   <p className="text-xs font-black uppercase tracking-[0.26em] text-white">
-                    {featuredProof.label}
+                    {company.about.featuredProof.label}
                   </p>
                   <p className="text-lg font-medium leading-relaxed text-white/72">
-                    {featuredProof.description}
+                    {company.about.featuredProof.description}
                   </p>
                 </div>
 
                 <div className="grid gap-3 sm:grid-cols-3">
-                  {featuredProof.chips.map((item) => (
+                  {company.about.featuredProof.chips.map((item) => (
                     <div
                       key={item}
                       className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-[10px] font-black uppercase tracking-[0.2em] text-white/72"
@@ -137,7 +108,7 @@ const About = () => {
             </motion.article>
 
             <div className="grid gap-6">
-              {sideStats.map((stat, index) => (
+              {company.about.sideStats.map((stat, index) => (
                 <motion.article
                   key={stat.label}
                   initial={{ opacity: 0, y: 28 }}
@@ -183,7 +154,7 @@ const About = () => {
           <span className="text-[10px] font-black uppercase tracking-[0.26em] text-slate-950">
             Supporting Proof
           </span>
-          {["No overtime surprise fees", "Chicago-focused dispatch", "Respectful in-home service"].map((item) => (
+          {company.about.supportingProof.map((item) => (
             <div key={item} className="flex items-center gap-1.5 text-[10px] font-black uppercase tracking-[0.16em] text-slate-500">
               <Dot className="w-4 h-4 text-secondary" />
               {item}

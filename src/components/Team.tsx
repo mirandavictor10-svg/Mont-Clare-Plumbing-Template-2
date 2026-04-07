@@ -1,20 +1,6 @@
 import { Zap } from "lucide-react";
 import { motion, Variants } from "framer-motion";
-
-const team = [
-  { name: "William \"Bill\" Taylor III", title: "Owner & Founder", photo: "https://herlemnsfxaozokirbwm.supabase.co/storage/v1/object/public/4s-plumbing/team/bill-taylor.jpg", highlight: true },
-  { name: "Todd Menegon", title: "Master 055 Plumber / Project Foreman", photo: "https://herlemnsfxaozokirbwm.supabase.co/storage/v1/object/public/4s-plumbing/team/todd-menegon.png" },
-  { name: "Ryan Brown", title: "Master 055 Plumber", photo: "https://herlemnsfxaozokirbwm.supabase.co/storage/v1/object/public/4s-plumbing/team/ryan-brown.png" },
-  { name: "Dominic Costantino", title: "Plumbing Supervisor", photo: "https://herlemnsfxaozokirbwm.supabase.co/storage/v1/object/public/4s-plumbing/team/dominic-costantino.jpg" },
-  { name: "Eric Kronenbitter", title: "Plumber / Sewer Supervisor", photo: "https://herlemnsfxaozokirbwm.supabase.co/storage/v1/object/public/4s-plumbing/team/eric-kronenbitter.png" },
-  { name: "Joseph O'Neal", title: "Plumbing Field Supervisor", photo: "https://herlemnsfxaozokirbwm.supabase.co/storage/v1/object/public/4s-plumbing/team/joseph-oneal.png" },
-  { name: "Tim Morano", title: "Plumber / Carpenter", photo: "https://herlemnsfxaozokirbwm.supabase.co/storage/v1/object/public/4s-plumbing/team/tim-morano.png" },
-  { name: "Paul Carrasquillo", title: "Plumber", photo: "https://herlemnsfxaozokirbwm.supabase.co/storage/v1/object/public/4s-plumbing/team/paul-carrasquillo.png" },
-  { name: "Joseph Lundgren", title: "Plumber / Drain Specialist", photo: "https://herlemnsfxaozokirbwm.supabase.co/storage/v1/object/public/4s-plumbing/team/joseph-lundgren.png" },
-  { name: "Raymond Reyes", title: "HVAC Technician", photo: "https://herlemnsfxaozokirbwm.supabase.co/storage/v1/object/public/4s-plumbing/team/raymond-reyes.png" },
-  { name: "Ahmad Al-Awawdeh", title: "Plumbing Supervisor", photo: "https://herlemnsfxaozokirbwm.supabase.co/storage/v1/object/public/4s-plumbing/team/ahmad-al-awawdeh.png" },
-  { name: "John Love", title: "Plumber / Sewer Specialist", photo: "https://herlemnsfxaozokirbwm.supabase.co/storage/v1/object/public/4s-plumbing/team/john-love.png" },
-];
+import { company } from "@/config/company.config";
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -44,13 +30,13 @@ const Team = () => {
         >
           <div className="inline-flex items-center gap-2 bg-secondary/10 px-4 py-1.5 rounded-full border border-secondary/20 shadow-sm">
             <Zap className="w-3.5 h-3.5 text-secondary animate-pulse" />
-            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-secondary">24+ Strong</span>
+            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-secondary">{company.stats.techCount}+ Strong</span>
           </div>
           <h2 className="text-5xl md:text-7xl font-black tracking-tighter text-foreground leading-[0.9] drop-shadow-sm">
             Meet the <br /><span className="text-secondary italic">Team.</span>
           </h2>
           <p className="text-xl text-muted-foreground font-medium max-w-2xl mx-auto leading-relaxed">
-            Licensed, background-checked, and trained to treat your home like their own. These are the faces behind every 4S service call.
+            Licensed, background-checked, and trained to treat your home like their own. These are the faces behind every {company.shortName} service call.
           </p>
         </motion.div>
 
@@ -61,7 +47,7 @@ const Team = () => {
           viewport={{ once: true, margin: "-50px" }}
           className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6"
         >
-          {team.map((member) => (
+          {company.team.map((member) => (
             <motion.div
               key={member.name}
               variants={itemVariants}
@@ -104,7 +90,7 @@ const Team = () => {
           transition={{ delay: 0.5 }}
           className="text-center mt-16 text-sm text-muted-foreground font-medium"
         >
-          Plus 12 more certified technicians, apprentices, and support staff serving Chicago daily.
+          {company.teamFootnote}
         </motion.p>
       </div>
     </section>

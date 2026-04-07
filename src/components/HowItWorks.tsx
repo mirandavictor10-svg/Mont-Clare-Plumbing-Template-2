@@ -1,11 +1,8 @@
 import { PhoneCall, Truck, CheckCircle2, Zap } from "lucide-react";
 import { motion } from "framer-motion";
+import { company } from "@/config/company.config";
 
-const steps = [
-  { num: "01", icon: PhoneCall, title: "You Call. We Answer.", desc: "Reach a real person — not a call center. We give you an upfront flat-rate quote on the spot. No hidden fees. No guesswork." },
-  { num: "02", icon: Truck, title: "We Show Up in 45 Min", desc: "A licensed, uniformed technician pulls up within 45 minutes — day or night, weekends and holidays included." },
-  { num: "03", icon: CheckCircle2, title: "Fixed Right. Guaranteed.", desc: "We fix it right the first time, clean up after ourselves, and back every job with a 100% satisfaction guarantee." },
-];
+const stepIcons = [PhoneCall, Truck, CheckCircle2];
 
 const HowItWorks = () => {
   return (
@@ -27,24 +24,27 @@ const HowItWorks = () => {
         <div className="grid md:grid-cols-3 gap-12 relative">
           <div className="hidden md:block absolute top-[2.25rem] left-[10%] right-[10%] h-px bg-foreground/5 z-0" />
 
-          {steps.map((s, i) => (
-            <motion.div
-              key={s.num}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.1 }}
-              className="text-center group relative z-10"
-            >
-              <div className="w-20 h-20 rounded-[1.5rem] bg-foreground text-background flex items-center justify-center mx-auto mb-8 text-2xl font-black shadow-2xl group-hover:bg-secondary group-hover:text-background transition-all duration-500 relative">
-                <div className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-secondary text-background text-[10px] flex items-center justify-center border-4 border-background leading-none">
-                  {s.num}
+          {company.howItWorks.steps.map((s, i) => {
+            const Icon = stepIcons[i % stepIcons.length];
+            return (
+              <motion.div
+                key={s.num}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.1 }}
+                className="text-center group relative z-10"
+              >
+                <div className="w-20 h-20 rounded-[1.5rem] bg-foreground text-background flex items-center justify-center mx-auto mb-8 text-2xl font-black shadow-2xl group-hover:bg-secondary group-hover:text-background transition-all duration-500 relative">
+                  <div className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-secondary text-background text-[10px] flex items-center justify-center border-4 border-background leading-none">
+                    {s.num}
+                  </div>
+                  <Icon className="w-8 h-8" />
                 </div>
-                <s.icon className="w-8 h-8" />
-              </div>
-              <h3 className="text-xl font-black uppercase tracking-tight text-foreground mb-4">{s.title}</h3>
-              <p className="text-sm text-muted-foreground font-medium max-w-[280px] mx-auto leading-relaxed">{s.desc}</p>
-            </motion.div>
-          ))}
+                <h3 className="text-xl font-black uppercase tracking-tight text-foreground mb-4">{s.title}</h3>
+                <p className="text-sm text-muted-foreground font-medium max-w-[280px] mx-auto leading-relaxed">{s.desc}</p>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>

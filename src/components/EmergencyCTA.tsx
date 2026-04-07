@@ -1,5 +1,6 @@
 import { Phone, Zap } from "lucide-react";
 import { motion } from "framer-motion";
+import { company } from "@/config/company.config";
 
 const EmergencyCTA = () => {
   return (
@@ -22,7 +23,7 @@ const EmergencyCTA = () => {
             Plumbing Emergency? <br /><span className="text-secondary italic">We're Already on the Way.</span>
           </h2>
           <p className="text-xl md:text-2xl text-background/50 font-medium max-w-2xl mx-auto leading-relaxed">
-            Our trucks are stationed across Chicago. Flat-rate pricing — same cost days, nights, weekends, and holidays. No overtime. Ever.
+            Our trucks are stationed across {company.city}. Flat-rate pricing — same cost days, nights, weekends, and holidays. No overtime. Ever.
           </p>
         </motion.div>
 
@@ -33,14 +34,14 @@ const EmergencyCTA = () => {
           className="space-y-6"
         >
           <a
-            href="tel:7733533050"
+            href={`tel:${company.phoneRaw}`}
             className="inline-flex items-center gap-6 bg-secondary text-background px-12 py-8 rounded-[2rem] text-2xl font-black uppercase tracking-tighter hover:scale-105 active:scale-95 transition-all shadow-2xl shadow-secondary/40 group"
           >
             <Phone className="w-8 h-8 group-hover:rotate-12 transition-transform" />
-            Call (773) 353-3050
+            Call {company.phone}
           </a>
           <p className="text-sm font-bold text-background/40">
-            Available 24/7 — No Overtime Charges — 45-Minute Response
+            Available 24/7 — No Overtime Charges — {company.stats.responseMin}-Minute Response
           </p>
         </motion.div>
       </div>

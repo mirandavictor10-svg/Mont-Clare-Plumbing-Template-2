@@ -1,41 +1,7 @@
 import { useState } from "react";
 import { ChevronDown, Zap } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-
-const faqs = [
-  {
-    q: "What plumbing services do you offer?",
-    a: "We offer full-service plumbing repair and installation — drains, toilets, faucets, showers, water heaters, gas lines, sewer repair, flood control, HVAC, and more. Both residential and commercial.",
-  },
-  {
-    q: "Do you offer emergency plumbing services?",
-    a: "Yes. Our 24/7 emergency team responds within 45 minutes to leaks, clogged drains, burst pipes, sewer backups, and gas leaks — nights, weekends, and holidays. No overtime charges.",
-  },
-  {
-    q: "How much does it cost? Do you charge for estimates?",
-    a: "We provide free estimates and upfront flat-rate pricing. You know the exact cost before we start — no hourly rates, no surprise add-ons, no overtime charges. The price we quote is the price you pay.",
-  },
-  {
-    q: "What areas do you serve?",
-    a: "We serve all of Chicago and surrounding suburbs within a 45-mile radius, including Irving Park, Portage Park, Dunning, Belmont Cragin, Elmwood Park, Norridge, Schiller Park, and more.",
-  },
-  {
-    q: "Are you licensed and insured?",
-    a: "Yes — fully licensed (Master License #055), bonded, and insured. Every technician is background-checked and certified. We've been family-owned and operating in Chicago since 2014.",
-  },
-  {
-    q: "Do you handle commercial plumbing projects?",
-    a: "Absolutely. We service offices, restaurants, multi-unit buildings, and commercial properties. From grease trap cleaning to full sewer line repair — we handle projects of all sizes.",
-  },
-  {
-    q: "What should I do if I have a leak or clogged drain?",
-    a: "Turn off your water supply if necessary and call us immediately at (773) 353-3050. We'll have a licensed technician at your door within 45 minutes to diagnose and fix the issue.",
-  },
-  {
-    q: "Do you offer senior or military discounts?",
-    a: "Yes! We offer a 10% discount for seniors and a 10% discount for active military and veterans. Just let us know when you call.",
-  },
-];
+import { company } from "@/config/company.config";
 
 const FAQItem = ({ faq, index }: { faq: { q: string; a: string }; index: number }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -103,7 +69,7 @@ const FAQ = () => {
         </motion.div>
 
         <div className="bg-card/40 backdrop-blur-sm border border-foreground/5 rounded-[2.5rem] px-8 sm:px-12 py-4">
-          {faqs.map((faq, i) => (
+          {company.faq.map((faq, i) => (
             <FAQItem key={faq.q} faq={faq} index={i} />
           ))}
         </div>
@@ -115,9 +81,9 @@ const FAQ = () => {
           className="text-center mt-12 text-sm text-muted-foreground font-medium"
         >
           Have another question? Call us at{" "}
-          <a href="tel:7733533050" className="text-secondary font-bold hover:underline">(773) 353-3050</a>
+          <a href={`tel:${company.phoneRaw}`} className="text-secondary font-bold hover:underline">{company.phone}</a>
           {" "}or text{" "}
-          <a href="tel:3124206081" className="text-secondary font-bold hover:underline">(312) 420-6081</a>
+          <a href={`tel:${company.phoneAfterHoursRaw}`} className="text-secondary font-bold hover:underline">{company.phoneAfterHours}</a>
         </motion.p>
       </div>
     </section>
