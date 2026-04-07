@@ -16,7 +16,11 @@ const Footer = () => (
             href="#"
             className="inline-block"
           >
-            <img src={logo} alt={company.shortName} className="h-16 w-auto brightness-0 invert" />
+            <img
+              src={logo}
+              alt={company.shortName}
+              className="h-16 w-auto rounded-xl bg-white px-4 py-3 shadow-lg ring-1 ring-black/10"
+            />
           </motion.a>
           <p className="text-background/40 font-bold uppercase text-xs tracking-[0.2em] leading-relaxed max-w-sm">
             {company.footerTagline}
